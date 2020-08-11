@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using System.Text;
 
 namespace ConsoleExtensions
 {
@@ -45,6 +47,32 @@ namespace ConsoleExtensions
         {
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
+        }
+
+        public static void WriteCopyright()
+        {
+            var assembly = Assembly.GetEntryAssembly();
+            string name = assembly.GetName().Name;
+            string version = assembly.GetName().Version.ToString();
+
+            int rowLength = name.Length + version.Length + 6 + 2;
+            string spacerRow = GenerateRepeatable('*', rowLength);
+            string spaces = GenerateRepeatable(' ', rowLength - 4);
+            Console.WriteLine(spacerRow);
+            Console.WriteLine(spacerRow);
+            Console.WriteLine($"**{spaces}**");
+            Console.WriteLine($"** {name} v{version} **");
+            Console.WriteLine($"**{spaces}**");
+            Console.WriteLine(spacerRow);
+            Console.WriteLine(spacerRow);
+        }
+
+        static string GenerateRepeatable(char ch, int length)
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < length; i++)
+                sb.Append(ch);
+            return sb.ToString();
         }
     }
 }
