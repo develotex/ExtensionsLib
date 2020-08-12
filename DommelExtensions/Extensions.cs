@@ -13,7 +13,7 @@ namespace DommelExtensions
     {
         public static int InsertInt<T>(this IDbConnection conn, T entity) where T : class
         {
-            var id = (ulong)conn.Insert<T>(entity);
+            var id = (ulong) conn.Insert<T>(entity);
             return Convert.ToInt32(id);
         }
 
@@ -28,9 +28,14 @@ namespace DommelExtensions
             }
             catch (MySqlException ex)
             {
-                if (ex.Number != (int)MySqlErrorCode.DuplicateEntryWithKeyName)
-                    throw;
-                return null;
+                switch ((MySqlErrorCode) ex.Number)
+                {
+                    case MySqlErrorCode.DuplicateEntryWithKeyName:
+                    case MySqlErrorCode.DuplicateKeyEntry:
+                        return null;
+                    default:
+                        throw;
+                }
             }
         }
 
