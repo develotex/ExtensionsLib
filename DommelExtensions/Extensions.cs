@@ -39,8 +39,10 @@ namespace DommelExtensions
             }
         }
 
-        public static bool IsExists<TEntity>(this IDbConnection conn, Expression<Func<TEntity, bool>> predicate) =>
-            conn.Select(predicate).Any();
+        public static bool IsExists<T>(this IDbConnection db, Expression<Func<T, bool>> selector)
+        {
+            return db.Count<T>(selector) > 0;
+        }
 
         /// <summary>
         /// Read multiple objects from a single record set on the grid
