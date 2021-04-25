@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Dapper;
 using Dommel;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace DommelExtensions
 {
@@ -26,7 +26,7 @@ namespace DommelExtensions
             {
                 return conn.Insert<T>(entity);
             }
-            catch (MySqlException ex)
+            catch (MySqlException ex) 
             {
                 switch ((MySqlErrorCode) ex.Number)
                 {
