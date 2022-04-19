@@ -1,9 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>ConsoleExtensions</RootNamespace>
-    <AssemblyName>ConsoleExtensions</AssemblyName>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>ConsoleExtensions</RootNamespace>
+		<AssemblyName>ConsoleExtensions</AssemblyName>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Copyright>© 2022 alexalok</Copyright>
+		<PackageProjectUrl>https://github.com/develotex/ExtensionsLib</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/develotex/ExtensionsLib</RepositoryUrl>
+		<PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<Authors>alexalok</Authors>
+		<Company>Develotex LLC</Company>
+		<Description>Console Extensions library.</Description>
+		<PackageId>Develotex.$(AssemblyName)</PackageId>
+	</PropertyGroup>
 
 </Project>
